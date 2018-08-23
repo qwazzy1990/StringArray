@@ -39,7 +39,7 @@ int main(int argc, char* argv[])
     //tokens->sort(tokens, CASE_INSENSITIVE);
     //printf("Before sort\n");
     a->print(a);
-    a->sort(a, CASE_INSENSITIVE);
+    a->sort(a, CASE_SENSITIVE);
     //printf("After sort\n");
     a->print(a);
     destroy_string_array(a);

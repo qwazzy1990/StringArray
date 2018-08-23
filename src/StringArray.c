@@ -555,10 +555,13 @@ void print_string_array(AnyData d)
 /***FIX ME***/
 void sort_string_array(StringArray a, CaseSensitivity mode)
 {
-    StringArray temp = new_default_string_array();
-    
+    if(a == NULL)return;
+    if(a->size <= 1)return;
+    if(a->strings == NULL)return;
     if(mode == CASE_INSENSITIVE)
     {
+        StringArray temp = new_default_string_array();
+
         forall(a->size)
         {
             String lower = to_lower(a->strings[x]);
@@ -591,7 +594,7 @@ void sort_string_array(StringArray a, CaseSensitivity mode)
     else{
         for(int i = 0; i < a->size - 1; i++){
             for(int j = i+1; j < a->size; j++){
-                if(string_compare(a->strings[i], a->strings[j], CASE_SENSITIVE)>0){
+                if(string_compare(a->strings[i], a->strings[j], 1)>0){
                     String temp = a->strings[i];
                     a->strings[i] = a->strings[j];
                     a->strings[j] = temp;
